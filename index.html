@@ -66,23 +66,25 @@
               <h1 class="title is-1 publication-title">WideSeek: Advancing Wide Research via Multi-Agent Scaling</h1>
               <div class="is-size-5 publication-authors">
                 <span class="author-block">
-                  <a href="#" target="_blank">Ziyang Huang</a><sup>*</sup>,</span>
+                  <a href="https://github.com/hzy312" target="_blank">Ziyang
+                    Huang</a><sup>*</sup>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Haolin Ren</a><sup>*</sup>,</span>
+                  <a href="https://github.com/basil-man" target="_blank">Haolin Ren</a><sup>*</sup>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Xiaowei Yuan</a>,</span>
+                  <a href="https://github.com/Stacy027/" target="_blank">Xiaowei Yuan</a>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Jiawei Wang</a>,</span>
+                  <a href="https://jarvisustc.github.io/" target="_blank">Jiawei Wang</a>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Zhongtao Jiang</a>,</span>
+                  <a href="https://openreview.net/profile?id=~Zhongtao_Jiang1" target="_blank">Zhongtao
+                    Jiang</a>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Kun Xu</a>,</span>
+                  <a href="https://openreview.net/profile?id=~Kun_Xu4" target="_blank">Kun Xu</a>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Shizhu He</a>,</span>
+                  <a href="https://heshizhu.github.io/" target="_blank">Shizhu He</a>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Jun Zhao</a>,</span>
+                  <a href="https://zhaojun-nlpr.github.io/" target="_blank">Jun Zhao</a>,</span>
                 <span class="author-block">
-                  <a href="#" target="_blank">Kang Liu</a>
+                  <a href="http://www.nlpr.ia.ac.cn/cip/~liukang/index.html" target="_blank">Kang Liu</a>
                 </span>
               </div>
 
@@ -197,8 +199,9 @@
               <img src="figs/wideseek_method.png" alt="WideSeek Method">
             </figure>
             <p class="has-text-centered is-italic has-text-grey">
-              The illustration of Multi-Agent Reinforcement Learning. As shown in the left, main agent could fork any
-              sub-agents at any steps. The trajectories of main agent and sub-agent are unified for RL training.
+              An illustration of Multi-Agent Reinforcement Learning. As shown on the left, the main agent can fork any
+              number of sub-agents at any step. The trajectories of the main agent and sub-agents are unified for RL
+              training.
             </p>
           </div>
         </div>
@@ -234,7 +237,8 @@
             <figure class="image">
               <img src="figs/wideseekbench.png" alt="WideSeekBench">
             </figure>
-            <p class="has-text-centered is-italic has-text-grey">WideSeekBench benchmark statistics and distribution.
+            <p class="has-text-centered is-italic has-text-grey">The data pipeline of WideSeekBench constrauction, whcih
+              mines a set of target information under complex constraints.
             </p>
           </div>
         </div>
@@ -399,10 +403,10 @@
         <div class="columns is-centered">
           <div class="column is-four-fifths">
             <figure class="image">
-              <img src="figs/training_reward_curve.svg" alt="Training Reward Curve">
+              <img src="figs/training_reward_tool_call.svg" alt="Training Reward Curve">
             </figure>
-            <p class="has-text-centered is-italic has-text-grey">Training dynamics showing correlation between reward
-              and tool calls.</p>
+            <p class="has-text-centered is-italic has-text-grey">The training dynamics of WideSeek-8B-RL. We present the
+              evolution of training rewards and the frequency of tool calls throughout the entire training process.</p>
           </div>
         </div>
 
@@ -508,21 +512,20 @@
             <figure class="image">
               <img src="figs/bucket_analysis_combined.svg" alt="Bucket Analysis">
             </figure>
-            <p class="has-text-centered is-italic has-text-grey">Bucket analysis of performance across different task
-              complexities.</p>
+            <p class="has-text-centered is-italic has-text-grey">Item-F1 score, the number of sub-agents, and the number
+              of tool calls on different task sets with different volume of target information.</p>
           </div>
           <div class="column">
             <figure class="image">
               <img src="figs/domain_radar_analysis.svg" alt="Domain Analysis">
             </figure>
-            <p class="has-text-centered is-italic has-text-grey">Domain distribution and performance analysis.</p>
+            <p class="has-text-centered is-italic has-text-grey">Item-F1 score on different domains.</p>
           </div>
           <div class="column">
             <figure class="image">
               <img src="figs/constraint_type_analysis.svg" alt="Constraint Analysis">
             </figure>
-            <p class="has-text-centered is-italic has-text-grey">Constraint type analysis showing system behavior across
-              different logical operations.</p>
+            <p class="has-text-centered is-italic has-text-grey">Item-F1 score on different constraint types.</p>
           </div>
         </div>
       </div>
