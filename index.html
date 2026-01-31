@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="WideSeek: Advancing Wide Research via Multi-Agent Scaling">
+  <meta name="description"
+    content="A dynamic hierarchical multi-agent architecture for comprehensive information retrieval. Introducing WideSeekBench benchmark and WideSeek system optimized via end-to-end RL.">
+  <meta name="keywords"
+    content="Wide Research, Multi-Agent Systems, Reinforcement Learning, Information Retrieval, AI Agents, arXiv">
+  <meta name="author"
+    content="Ziyang Huang, Haolin Ren, Xiaowei Yuan, Jiawei Wang, Zhongtao Jiang, Kun Xu, Shizhu He, Jun Zhao, Kang Liu">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="WideSeek Research">
+  <meta property="og:title" content="WideSeek: Advancing Wide Research via Multi-Agent Scaling">
+  <meta property="og:description"
+    content="A dynamic hierarchical multi-agent architecture for comprehensive information retrieval">
+  <meta property="og:url" content="https://wideseek-ai.github.io">
+  <meta property="og:image" content="figs/wideseek_intro_single_col.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WideSeek: Advancing Wide Research via Multi-Agent Scaling">
+  <meta name="twitter:description"
+    content="A dynamic hierarchical multi-agent architecture for comprehensive information retrieval">
+  <meta name="twitter:image" content="figs/wideseek_intro_single_col.png">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="WideSeek: Advancing Wide Research via Multi-Agent Scaling">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="arXiv">
+
+  <title>WideSeek: Advancing Wide Research via Multi-Agent Scaling</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">WideSeek: Advancing Wide Research via Multi-Agent Scaling</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="#" target="_blank">Ziyang Huang</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Haolin Ren</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Xiaowei Yuan</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Jiawei Wang</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Zhongtao Jiang</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Kun Xu</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Shizhu He</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Jun Zhao</a>,</span>
+                <span class="author-block">
+                  <a href="#" target="_blank">Kang Liu</a>
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">arXiv</span>
+                <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-database"></i>
+                      </span>
+                      <span>Dataset</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Search intelligence is evolving from Deep Research to Wide Research, a paradigm essential for retrieving
+                and synthesizing comprehensive information sets under complex constraints in parallel. However,
+                advancements in this field are impeded by the lack of dedicated benchmarks and optimization
+                methodologies for search breadth. To address these challenges, we give a deep dive into Wide Research
+                from two perspectives: Data Pipeline and Agent Optimization. First, we produce WideSeekBench, a General
+                Broad Information Seeking (GBIS) benchmark constructed via a rigorous multi-phase data pipeline to
+                ensure diversity across the volume of target information, logical constraints, and domains. Second, we
+                introduce WideSeek, a dynamic hierarchical multi-agent architecture that could autonomously fork
+                parallel sub-agents based on task requirements. Furthermore, we design a unified training framework that
+                linearizes multi-agent trajectories and optimizes the system using end-to-end RL. Experimental results
+                demonstrate the effectiveness of WideSeek and multi-agent RL, highlighting that scaling the number of
+                agents is a promising direction for advancing Wide Research paradigm.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Contributions with Figure -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Key Contributions</h2>
+        <div class="columns">
+          <div class="column is-half">
+            <figure class="image">
+              <img src="figs/wideseek_intro_single_col.png" alt="Deep Research vs Wide Research">
+            </figure>
+            <p class="has-text-centered is-italic has-text-grey">Deep Research paradigm v.s. Wide Research paradigm.</p>
+          </div>
+          <div class="column is-half">
+            <div class="content">
+              <div class="box">
+                <h3 class="title is-5">📊 WideSeekBench</h3>
+                <p>A General Broad Information Seeking (GBIS) benchmark constructed via a rigorous multi-phase data
+                  pipeline, ensuring diversity across information volume, logical constraints, and domains.</p>
+              </div>
+              <div class="box">
+                <h3 class="title is-5">🤖 WideSeek Architecture</h3>
+                <p>A dynamic hierarchical multi-agent system that autonomously forks parallel sub-agents based on task
+                  requirements, enabling scalable information retrieval.</p>
+              </div>
+              <div class="box">
+                <h3 class="title is-5">🎯 Unified RL Framework</h3>
+                <p>An end-to-end reinforcement learning framework that linearizes multi-agent trajectories and
+                  optimizes the system for wide research tasks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Method Overview -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Method Overview</h2>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <figure class="image">
+              <img src="figs/wideseek_method.png" alt="WideSeek Method">
+            </figure>
+            <p class="has-text-centered is-italic has-text-grey">
+              The illustration of Multi-Agent Reinforcement Learning. As shown in the left, main agent could fork any
+              sub-agents at any steps. The trajectories of main agent and sub-agent are unified for RL training.
+            </p>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="content">
+              <h3 class="title is-4">Dynamic Multi-Agent Architecture</h3>
+              <p>
+                WideSeek operates as a hierarchical multi-agent system with a centralized Main Agent (Planner) that
+                dynamically forks variable instances of Sub-Agents (Executors) at any step.
+                Unlike static multi-agent architectures with fixed roles, WideSeek empowers the main agent with complete
+                autonomy to instantiate any number of sub-agents based on task requirements.
+              </p>
+              <h3 class="title is-4">Unified Reinforcement Learning</h3>
+              <p>
+                We linearize the hierarchical execution trace into a single sequence and optimize the system using Group
+                Relative Policy Optimization (GRPO).
+                The unified trajectory interleaves Main Agent planning steps with Sub-Agent execution steps, enabling
+                end-to-end optimization of the entire multi-agent system.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WideSeekBench -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">WideSeekBench</h2>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <figure class="image">
+              <img src="figs/wideseekbench.png" alt="WideSeekBench">
+            </figure>
+            <p class="has-text-centered is-italic has-text-grey">WideSeekBench benchmark statistics and distribution.
+            </p>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="content">
+              <p>
+                WideSeekBench is a General Broad Information Seeking (GBIS) benchmark constructed via a rigorous
+                multi-phase data pipeline.
+                The benchmark ensures diversity across:
+              </p>
+              <ul>
+                <li><strong>Volume of target information:</strong> Varying scales of information retrieval tasks</li>
+                <li><strong>Logical constraints:</strong> Complex set operations (intersection, union, difference)</li>
+                <li><strong>Domains:</strong> Multi-dimensional domain coverage</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experimental Results -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+
+        <h3 class="title is-4">Main Results on WideSeekBench</h3>
+        <div class="table-container">
+          <div class="table-wrapper">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th rowspan="2">Model</th>
+                  <th rowspan="2">Success Rate (%)</th>
+                  <th colspan="2">Row F1 Score (%)</th>
+                  <th colspan="2">Item F1 Score (%)</th>
+                  <th rowspan="2"># Sub-Agents</th>
+                  <th rowspan="2"># Tool Calls</th>
+                </tr>
+                <tr>
+                  <th>Mean@4</th>
+                  <th>Max@4</th>
+                  <th>Mean@4</th>
+                  <th>Max@4</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="has-background-grey-lighter">
+                  <td colspan="8"><em><strong>Proprietary Models</strong></em></td>
+                </tr>
+                <tr>
+                  <td>GPT-5.2</td>
+                  <td>0.00</td>
+                  <td><strong>4.45</strong></td>
+                  <td>6.75</td>
+                  <td><strong>21.03</strong></td>
+                  <td>26.88</td>
+                  <td>11.21</td>
+                  <td><strong>408.64</strong></td>
+                </tr>
+                <tr>
+                  <td>GPT-5.1</td>
+                  <td>0.00</td>
+                  <td>4.11</td>
+                  <td>6.75</td>
+                  <td>20.44</td>
+                  <td><strong>27.88</strong></td>
+                  <td>6.02</td>
+                  <td>121.36</td>
+                </tr>
+                <tr>
+                  <td>DeepSeek-v3.2</td>
+                  <td>0.00</td>
+                  <td>4.34</td>
+                  <td><strong>6.85</strong></td>
+                  <td>20.51</td>
+                  <td>27.09</td>
+                  <td><strong>31.25</strong></td>
+                  <td>326.41</td>
+                </tr>
+                <tr>
+                  <td>Kimi-K2-Thinking</td>
+                  <td>0.00</td>
+                  <td>3.17</td>
+                  <td>5.86</td>
+                  <td>17.48</td>
+                  <td>25.19</td>
+                  <td>8.74</td>
+                  <td>85.36</td>
+                </tr>
+                <tr>
+                  <td>Seed-1.8</td>
+                  <td>0.14</td>
+                  <td>3.44</td>
+                  <td>5.92</td>
+                  <td>17.88</td>
+                  <td>25.23</td>
+                  <td>7.93</td>
+                  <td>88.36</td>
+                </tr>
+                <tr class="has-background-grey-lighter">
+                  <td colspan="8"><em><strong>Open-Sourced Models</strong></em></td>
+                </tr>
+                <tr>
+                  <td>Qwen3-8B-Thinking</td>
+                  <td>0.00</td>
+                  <td>0.53</td>
+                  <td>1.51</td>
+                  <td>7.37</td>
+                  <td>12.71</td>
+                  <td>4.18</td>
+                  <td>9.50</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-30B-A3B-Thinking</td>
+                  <td>0.00</td>
+                  <td>1.26</td>
+                  <td>3.00</td>
+                  <td>10.11</td>
+                  <td>16.51</td>
+                  <td>7.53</td>
+                  <td>17.15</td>
+                </tr>
+                <tr>
+                  <td>WideSeek-8B-RL</td>
+                  <td>0.00</td>
+                  <td>1.09 <span class="has-text-danger">(+0.56)</span></td>
+                  <td>2.59 <span class="has-text-danger">(+1.08)</span></td>
+                  <td>10.86 <span class="has-text-danger">(+3.49)</span></td>
+                  <td>16.61 <span class="has-text-danger">(+3.90)</span></td>
+                  <td>9.57 <span class="has-text-danger">(×2.29)</span></td>
+                  <td>41.09 <span class="has-text-danger">(×4.33)</span></td>
+                </tr>
+                <tr>
+                  <td>WideSeek-8B-SFT</td>
+                  <td>0.14</td>
+                  <td>1.74 <span class="has-text-danger">(+1.21)</span></td>
+                  <td>3.66 <span class="has-text-danger">(+2.15)</span></td>
+                  <td>11.35 <span class="has-text-danger">(+3.98)</span></td>
+                  <td>18.92 <span class="has-text-danger">(+6.21)</span></td>
+                  <td>13.16 <span class="has-text-danger">(×3.15)</span></td>
+                  <td>121.98 <span class="has-text-danger">(×12.84)</span></td>
+                </tr>
+                <tr class="has-background-info-light">
+                  <td><strong>WideSeek-8B-SFT-RL</strong></td>
+                  <td>0.00</td>
+                  <td><strong>1.95 <span class="has-text-danger">(+1.42)</span></strong></td>
+                  <td><strong>3.88 <span class="has-text-danger">(+2.37)</span></strong></td>
+                  <td><strong>12.87 <span class="has-text-danger">(+5.50)</span></strong></td>
+                  <td><strong>19.73 <span class="has-text-danger">(+7.02)</span></strong></td>
+                  <td><strong>26.60 <span class="has-text-danger">(×6.36)</span></strong></td>
+                  <td><strong>273.75 <span class="has-text-danger">(×28.82)</span></strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="has-text-centered is-italic has-text-grey">Experiment results on WideSeekBench. We run each task for
+            4 times.</p>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <figure class="image">
+              <img src="figs/training_reward_curve.svg" alt="Training Reward Curve">
+            </figure>
+            <p class="has-text-centered is-italic has-text-grey">Training dynamics showing correlation between reward
+              and tool calls.</p>
+          </div>
+        </div>
+
+        <h3 class="title is-4">Generalization to Deep Research</h3>
+        <p>To assess whether the capabilities transfer to deep research tasks, we evaluate our models on the
+          BrowseComp-Plus dataset.</p>
+        <div class="table-container">
+          <div class="table-wrapper">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Scaffold</th>
+                  <th>Acc (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="has-background-grey-lighter">
+                  <td colspan="3"><em><strong>Baseline Models (ReAct)</strong></em></td>
+                </tr>
+                <tr>
+                  <td>Gemini-2.5-Pro</td>
+                  <td>ReAct</td>
+                  <td>29.52</td>
+                </tr>
+                <tr>
+                  <td>GPT-OSS-120B-Low</td>
+                  <td>ReAct</td>
+                  <td>25.54</td>
+                </tr>
+                <tr>
+                  <td>DeepSeek-R1-0528</td>
+                  <td>ReAct</td>
+                  <td>16.39</td>
+                </tr>
+                <tr>
+                  <td>Search-R1-32B</td>
+                  <td>ReAct</td>
+                  <td>11.08</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-32B</td>
+                  <td>ReAct</td>
+                  <td>10.72</td>
+                </tr>
+                <tr class="has-background-grey-lighter">
+                  <td colspan="3"><em><strong>WideSeek Models</strong></em></td>
+                </tr>
+                <tr>
+                  <td>Qwen3-30B-A3B</td>
+                  <td>WideSeek</td>
+                  <td>14.82</td>
+                </tr>
+                <tr>
+                  <td>Qwen3-8B</td>
+                  <td>WideSeek</td>
+                  <td>14.22</td>
+                </tr>
+                <tr>
+                  <td>WideSeek-8B-SFT</td>
+                  <td>WideSeek</td>
+                  <td>23.61</td>
+                </tr>
+                <tr>
+                  <td>WideSeek-8B-SFT-RL</td>
+                  <td>WideSeek</td>
+                  <td>23.61</td>
+                </tr>
+                <tr class="has-background-info-light">
+                  <td><strong>WideSeek-8B-RL</strong></td>
+                  <td>WideSeek</td>
+                  <td><strong>26.42 <span class="has-text-danger">(+12.20)</span></strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="has-text-centered is-italic has-text-grey">BrowseComp-Plus performance. We test the generalization
+            of WideSeek to Deep Research dataset.</p>
+        </div>
+
+        <div class="content">
+          <h3 class="title is-4">Key Findings</h3>
+          <ul>
+            <li><strong>Scalability:</strong> WideSeek-8B-SFT-RL achieves 28.82× increase in tool calls and 6.36×
+              increase in sub-agent instantiation compared to base model.</li>
+            <li><strong>Performance:</strong> Item F1 score of 12.87% (+5.50% over base) and Max Row F1 of 3.88% on
+              WideSeekBench.</li>
+            <li><strong>Generalization:</strong> Achieves 26.42% accuracy on BrowseComp-Plus (+12.20% improvement),
+              demonstrating transfer to Deep Research tasks.</li>
+            <li><strong>Efficiency:</strong> The system learns to scale search effort aggressively, with strong
+              correlation between reward and tool usage.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analysis -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Analysis</h2>
+        <div class="columns">
+          <div class="column">
+            <figure class="image">
+              <img src="figs/bucket_analysis_combined.svg" alt="Bucket Analysis">
+            </figure>
+            <p class="has-text-centered is-italic has-text-grey">Bucket analysis of performance across different task
+              complexities.</p>
+          </div>
+          <div class="column">
+            <figure class="image">
+              <img src="figs/domain_radar_analysis.svg" alt="Domain Analysis">
+            </figure>
+            <p class="has-text-centered is-italic has-text-grey">Domain distribution and performance analysis.</p>
+          </div>
+          <div class="column">
+            <figure class="image">
+              <img src="figs/constraint_type_analysis.svg" alt="Constraint Analysis">
+            </figure>
+            <p class="has-text-centered is-italic has-text-grey">Constraint type analysis showing system behavior across
+              different logical operations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--BibTex citation -->
+    <section class="section hero is-light" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title is-3">BibTeX</h2>
+          <button class="copy-bibtex-btn button is-small" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <span class="icon"><i class="fas fa-copy"></i></span>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"
+          style="background-color: #ffffff !important; border: 1px solid #e5e7eb !important; border-radius: 12px !important;"><code style="background-color: #ffffff !important;">@article{wideseek2026,
+  title={WideSeek: Advancing Wide Research via Multi-Agent Scaling},
+  author={Huang, Ziyang and Ren, Haolin and Yuan, Xiaowei and Wang, Jiawei and Jiang, Zhongtao and Xu, Kun and He, Shizhu and Zhao, Jun and Liu, Kang},
+  journal={arXiv},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content has-text-centered">
+              <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank">Academic Project Page Template</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="static/js/index.js"></script>
+</body>
+
+</html>
